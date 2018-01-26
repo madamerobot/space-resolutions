@@ -1,0 +1,64 @@
+{
+  "name": "space-resolutions",
+  "version": "1.0.0",
+  "description": "Single page application based on model view controller model",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madamerobot/space-resolutions.git"
+  },
+  "author": "Valerie Fuchs",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.0",
+    "babelify": "^7.3.0",
+    "co-views": "^2.1.0",
+    "gsap": "^1.20.3",
+    "gulp-babel": "^7.0.0",
+    "gulp-sass": "^3.1.0",
+    "nunjucks": "^3.0.1",
+    "three.js": "^0.77.1",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "browserify": "^14.4.0",
+    "debug": "^3.1.0",
+    "del": "^3.0.0",
+    "document-register-element": "^1.7.0",
+    "dotenv": "^4.0.0",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-awspublish": "^3.3.0",
+    "gulp-cloudfront": "0.0.14",
+    "gulp-concat": "^2.6.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rev-all": "^0.9.7",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "koa": "^2.3.0",
+    "koa-body": "^2.5.0",
+    "koa-http-request": "^2.2.0",
+    "koa-route": "^3.2.0",
+    "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
+    "koa-views-render": "0.0.1",
+    "koa-views-templates": "^1.0.1",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.13.9",
+    "node-fetch": "^1.7.3",
+    "run-sequence": "^2.2.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/madamerobot/space-resolutions/issues"
+  },
+  "homepage": "https://github.com/madamerobot/space-resolutions#readme"
+}
