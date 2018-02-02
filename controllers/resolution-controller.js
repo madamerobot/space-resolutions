@@ -4,8 +4,20 @@ module.exports = (() => {
 
     return {
         //Find all entries
-        async get(ctx) {
+        async getAll(ctx) {
             let result = await Resolution.find({})
+            ctx.body = result
+        },
+
+        //Find one entries
+        async getOne(ctx) {
+            let result = await Resolution.findOne({ _id: ctx.params.id })
+            if (!result) {
+                ctx.body = {
+                    success: false
+                }
+                return
+            }
             ctx.body = result
         },
 
@@ -19,8 +31,8 @@ module.exports = (() => {
 
         //Update existing entry
         async put(ctx) {
-            var resolution = await Resolution.findOne({ _id: ctx.params.id })
-            if (!resolution) {
+            let result = await Resolution.findOne({ _id: ctx.params.id })
+            if (!result) {
                 ctx.body = {
                     success: false
                 }
@@ -28,24 +40,24 @@ module.exports = (() => {
             }
 
             for (var param in ctx.request.body) {
-                resolution[param] = ctx.request.body[param]
+                result[param] = ctx.request.body[param]
             }
 
-            await resoltion.save()
+            await result.save()
             ctx.body = result
         },
 
         //Delete existing entry
         async delete(ctx) {
-            var resolution = await Resolution.findOne({ _id: ctx.params.id })
-            if (!resolution) {
+            let result = await Resolution.findOne({ _id: ctx.params.id })
+            if (!result) {
                 ctx.body = {
                     success: false
                 }
                 return
             }
 
-            ctx.body = await resolution.remove()
+            ctx.body = await result.remove()
         }
     }
 

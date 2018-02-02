@@ -5,7 +5,8 @@ const koaBody = require('koa-body')()
 const ResolutionController = require('./../controllers/resolution-controller')
 
 //Calling respective controllers for routes
-router.get('/api/resolutions', ResolutionController.get)
+router.get('/api/resolutions', ResolutionController.getAll)
+router.get('/api/resolutions/:id', ResolutionController.getOne)
 router.post('/api/resolutions', ResolutionController.post)
 router.put('/api/resolutions/:id', ResolutionController.put)
 router.delete('/api/resolutions/:id', ResolutionController.delete) 
