@@ -8,10 +8,15 @@
     <body>
         <main role="main">
           <h1>Rocket Machine</p>
-          <p>This is my website</p>
         </main>
 
-        <form id="resolutionForm" name="resolutionForm">
+        <div id="all-resolutions-result"></div>
+
+        <p></p>
+
+        <h3> Ship your resolution into space </h3>
+
+        <form>
             Title:<br>
             <input type="text" name="title" id="name" value="I want to loose weight"><br>
             Author:<br>
@@ -19,8 +24,17 @@
             Description:<br>
             <input type="text" name="description" id="description" value="I give up because of Bitterballen"><br>
             <p></p>
-            <button id="submit-resolution">Send</button>
+            <a href="#" id="submit-resolution">Ship to space</a>
+            <p class="notification-field"></p>
         </form>
+
+        <h3> Edit your existing resolution </h3>
+        <input id="search-req-id" placeholder="Input your ID"></input>
+        <p></p>
+        <a href="#" id="display-one-resolution">Search</a>
+        <div id="one-resolution-result"></div>
+
+        <p></p>
 
         <script src="js/app.js"></script>
     </body>
