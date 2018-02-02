@@ -115,6 +115,7 @@ window.addEventListener("load", function () {
   this.formButton = document.querySelector('#submit-resolution');
   this.showAllButton = document.querySelector('#display-all-resolutions');
   this.showOneButton = document.querySelector('#display-one-resolution');
+  var starIconButtons = document.querySelectorAll('.star-icon');
 
   //Result Output Fields
   var notificationField = document.querySelector('.notification-field');
@@ -122,20 +123,18 @@ window.addEventListener("load", function () {
   var oneResField = document.querySelector('#one-resolution-result');
 
   //API Calls
-  //Calling API endpoint to deliver all entries from DB
-
+  //Calling API endpoint to deliver all entries from DB on windowLoad
   _apiRequestService2.default.getAllResolutions().then(function (result) {
     result.forEach(function (item) {
-
-      //Hacky Solution to temporarily clean DB Entries
-      if (item.title == undefined) {
-        item.title = 'My Resolution';
-      }
 
       var newNode = document.createElement('div');
       newNode.classList.add('star-icon');
       newNode.innerHTML = "<a href='#' data-id='" + item._id + "'>⭐️ </a>";
       allResField.appendChild(newNode);
+
+      newNode.addEventListener("click", function () {
+        console.log(item.title ? item.title : 'No title provided');
+      });
     });
   });
 
@@ -159,7 +158,7 @@ window.addEventListener("load", function () {
     this.searchRequestID = document.querySelector('#search-req-id').value;
 
     _apiRequestService2.default.findOneResolution(this.searchRequestID).then(function (result) {
-      oneResField.innerHTML = result;
+      oneResField.innerHTML = JSON.stringify(result);
     });
   });
 });
