@@ -142,7 +142,7 @@ window.addEventListener("load", function () {
 
       var newNode = document.createElement('div');
       newNode.classList.add('eye-icon');
-      newNode.innerHTML = "<button><img src='./static/eye.svg' alt='Hand Illustration Right'></button>";
+      newNode.innerHTML = "<button id='display-one-resolution'><img src='./static/eye.svg' alt='Hand Illustration Right'></button>";
       //<a href='#' data-id='" + item._id + "'>👁 </a>
       allResField.appendChild(newNode);
 
@@ -159,7 +159,6 @@ window.addEventListener("load", function () {
   this.formButton.addEventListener("click", function () {
 
     this.data = {
-      title: document.querySelector('#name').value,
       author: document.querySelector('#author').value,
       description: document.querySelector('#description').value
     };
@@ -169,15 +168,15 @@ window.addEventListener("load", function () {
     });
   });
 
-  //Calling API endpoint to deliver specific entry from DB
-  this.showOneButton.addEventListener("click", function () {
+  // //Calling API endpoint to deliver specific entry from DB
+  // this.showOneButton.addEventListener("click", function () {
 
-    this.searchRequestID = document.querySelector('#search-req-id').value;
+  //   this.searchRequestID = document.querySelector('#search-req-id').value
 
-    _apiRequestService2.default.findOneResolution(this.searchRequestID).then(function (result) {
-      oneResField.innerHTML = JSON.stringify(result);
-    });
-  });
+  //   RequestService.findOneResolution(this.searchRequestID).then((result => {
+  //     oneResField.innerHTML = JSON.stringify(result)
+  //   }))
+  // })
 });
 
 },{"./api-request-service.js":1,"./helper-functions.js":3}],3:[function(require,module,exports){

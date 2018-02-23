@@ -9,27 +9,153 @@
 .wrapper-main {
     background-color: #EB5B2B;
     height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.stage {
+
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .eye-icon {
+        position: absolute;
+        top: 200px;
+        left: 400px;
+        padding: 20px;
+        margin: 20px;
+
+        button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:focus{
+            outline: none;
+        }
+
+        img {
+            display: block;
+            height: 100%;
+            width: 100%;
+            max-width: 40px;
+        }
+    }
+
+    .curtain {
+        display: inline-block;
+        position: absolute;
+        z-index: 20;
+        background-color: black;
+
+        img {
+            height: 100vh;
+        }
+    }
+
+    .curtains-left {
+        left: 0;
+    }
+
+    .curtains-right {
+        right: 0;
+    }
+
+    .hand-wrapper {
+        width: 70%;
+        height: 100%;
+    }
+
+    .hand {
+        position: absolute;
+        display: block;
+        height: 70%;
+        width: 39%;
+        z-index: 5;
+        bottom: 0;
+
+        img {
+            max-height: 900px;
+            position: absolute;
+            bottom: -80px;
+        }
+    }
+
+    .hand-left {
+        left: 5%;
+    }
+
+    .hand-right {
+        right: 5%;
+    }
+
+    .rocket {
+        position: absolute;
+        height: 100%;
+        width: 20%;
+        top: 28%;
+        left: 40%;
+        z-index: 10;
+
+        img {
+            max-height: 500px;
+        }
+    }
+
+    .all-resolutions-result {
+        position: absolute;
+        width: 100%;
+        height: 200px;
+        top: 0;
+        left: 0;
+    }
+
+    .hill {
+        position: absolute;
+        display: block;
+        width: 100%;
+        bottom: -10px;
+        left: 0;
+    }
+}
+
+//All elements in container get centered, because parent container
+//is Flexbox container
+
+.flexbox-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
 }
 
 .center-container {
     width: 80%;
-    border: solid 1px black;
-    position: relative;
+    height: 100vh;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .header-logo, .intro-copy {
+    width: 100%;
     z-index: 10;
 }
 
 .header-logo {
-    width: 40%;
-    position: absolute;
-    left: 30%;
-    top: 4%;
     text-align: center;
     font-size: 20px;
+    margin-top: 2%;
     
     img {
         max-height: 100px;
@@ -37,132 +163,59 @@
 }
 
 .intro-copy {
-    width: 40%;
-    position: absolute;
-    top: 10%;
     margin-top: 20px;
-    left: 30%;
     text-align: center;
     font-size: 24px;
 }
 
-.all-resolutions-result {
-    position: absolute;
-    width: 100%;
-    height: 200px;
-    top: 0;
-    left: 0;
-}
-
-.eye-icon {
-    position: absolute;
-    top: 200px;
-    left: 400px;
-    padding: 20px;
-    margin: 20px;
-
-    button {
-        background: transparent;
-        border: none;
-        cursor: pointer;
-    }
-
-    button:focus{
-        outline: none;
-    }
-
-    img {
-        display: block;
-        height: 100%;
-        width: 100%;
-        max-width: 40px;
-    }
-}
-
-.curtain {
-    display: inline-block;
-    position: absolute;
-    z-index: 20;
-    background-color: black;
-
-    img {
-        height: 100vh;
-    }
-}
-
-.curtains-left {
-    left: 0;
-}
-
-.curtains-right {
-    right: 0;
-}
-
-
-.hand {
-    position: absolute;
-    display: block;
-    height: 70%;
-    width: 39%;
-    z-index: 5;
-    bottom: 0;
-
-    img {
-        max-height: 900px;
-        position: absolute;
-        bottom: -80px;
-    }
-}
-
-.rocket {
-    position: absolute;
-    height: 100%;
-    width: 20%;
-    top: 28%;
-    left: 40%;
-    z-index: 10;
-
-    img {
-        max-height: 500px;
-    }
-}
-
-
-.hand-left {
-    left: 0;
-}
-
-.hand-right {
-    right: 0;
-}
-
-.resolutions-edit {
-    display: none;
-}
-
 .resolutions-submit {
-    position: absolute;
-    display: block;
-    width: 20%;
-    bottom: 6%;
-    left: 40%;
-
+    width: 100%;
     text-align: left;
     font-size: 20px;
     color: black;
-
     z-index: 10;
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 2%;
+
+    form {
+        width: 24%;
+    }
+
+    input {
+        background-color: #F9EBD4;
+        border: solid 2px black;
+        border-bottom: solid;
+        border-width: 2px;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        width: 100%;
+        font-size: 20px;
+        
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: black;
+        }
+    }
 
     textarea {
-        background-color: #157497;
+        background-color: #F9EBD4;
         border: solid 2px black;
-        width: 100%;
-        height: 100px;
-        font-size: 20px;
         word-break: break-word;
         padding: 10px;
         margin-top: 20px;
         border-radius: 10px;
+        height: 100px;
+        width: 100%;
+        font-size: 20px;
 
         &:focus {
             outline: none;
@@ -173,41 +226,22 @@
         }
     }
 
-    input {
-        background-color: #157497;
-        border: solid 2px black;
-        border-bottom: solid;
-        border-width: 2px;
-        font-size: 20px;
-        padding: 10px;
-        // margin-bottom: 10px;
-        margin-top: 10px;
-        border-radius: 10px;
-
-        &:focus {
-            outline: none;
-        }
-
-        &::placeholder {
-            color: black;
-        }
-
+    span {
+        width: 100%;
     }
 
     a {
         padding: 14px 20px 14px 20px;
-        background-color: black;
-        color: #FAEDD4;
+        background-color: #1E769C;
+        color: black;
         text-decoration: none;
         border-radius: 10px;
     }
+
+    p {
+        width: 24%;
+        text-align: center;
+    }
 }
 
-.hill {
-    position: absolute;
-    display: block;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-}
 

@@ -9,41 +9,31 @@
     <body>
         <div class="wrapper-main">
 
-            <div class="curtain curtains-left">
-                 <img src="./static/curt-links-1.svg" alt="Curtain Illustration Element">
-                 <img src="./static/curt-links-2.svg" alt="Curtain Illustration Element">
-                 <img src="./static/curt-links-3.svg" alt="Curtain Illustration Element">
-                 <img src="./static/curt-links-4.svg" alt="Curtain Illustration Element">
-                 <img src="./static/curt-links-5.svg" alt="Curtain Illustration Element">
-                 <img src="./static/curt-links-6.svg" alt="Curtain Illustration Element">
-            </div>
-
-            <div class="curtain curtains-right">
-                 <img src="./static/curt-links-1.svg" alt="Curtain Illustration Element">
-                 <img src="./static/curt-links-2.svg" alt="Curtain Illustration Element">
-                 <img src="./static/curt-links-3.svg" alt="Curtain Illustration Element">
-                 <img src="./static/curt-links-4.svg" alt="Curtain Illustration Element">
-                 <img src="./static/curt-links-5.svg" alt="Curtain Illustration Element">
-                 <img src="./static/curt-links-6.svg" alt="Curtain Illustration Element">
-            </div>
-
-            <div class="center-container">
-
-                <div class="header-logo">
-                    <img src="./static/logo.svg" alt="Rocket Machine Logo">
-                </div>
-
-                <div class="intro-copy">
-                    <p>Yes, we all had them. And we all believed we’d make it.<br>
-                        But it’s time to let go. 
-                    </p>
-                    <p>
-                    Fire your 2018 resolutions up into space
-                    and feel better instantly.
-                    </p>
-                </div>
-
+            <!--Containing all Illustration Elements to set up the stage-->
+            <div class = "stage">
                 <div id="all-resolutions-result"></div>
+
+                <div class="rocket">
+                    <img src="./static/rocket-eye.svg" alt="Rocket Ship Illustration">
+                </div>
+
+                <div class="curtain curtains-left">
+                    <img src="./static/curt-links-1.svg" alt="Curtain Illustration Element">
+                    <img src="./static/curt-links-2.svg" alt="Curtain Illustration Element">
+                    <img src="./static/curt-links-3.svg" alt="Curtain Illustration Element">
+                    <img src="./static/curt-links-4.svg" alt="Curtain Illustration Element">
+                    <img src="./static/curt-links-5.svg" alt="Curtain Illustration Element">
+                    <img src="./static/curt-links-6.svg" alt="Curtain Illustration Element">
+                </div>
+
+                <div class="curtain curtains-right">
+                    <img src="./static/curt-links-1.svg" alt="Curtain Illustration Element">
+                    <img src="./static/curt-links-2.svg" alt="Curtain Illustration Element">
+                    <img src="./static/curt-links-3.svg" alt="Curtain Illustration Element">
+                    <img src="./static/curt-links-4.svg" alt="Curtain Illustration Element">
+                    <img src="./static/curt-links-5.svg" alt="Curtain Illustration Element">
+                    <img src="./static/curt-links-6.svg" alt="Curtain Illustration Element">
+                </div>
 
                 <div class="hand-wrapper">
                     <div class="hand hand-right">
@@ -55,34 +45,38 @@
                     </div>
                 </div>
 
-                <div class="rocket">
-                    <img src="./static/rocket-eye.svg" alt="Rocket Ship Illustration">
+                <div class="hill">
+                    <img src="./static/bottom-hill.svg" alt="Hill Illustration">
                 </div>
+            </div>
 
-                <main role="main">
+            <!--Containing all text, dynamic elements to set up UI-->
+            <div class="flexbox-container">
+                <div class="center-container">
+
+                    <div class="intro-copy">
+                        <div class="header-logo">
+                            <img src="./static/logo.svg" alt="Rocket Machine Logo">
+                        </div>
+                        <p>Yes, we all had them. And we all believed we’d make it.<br>
+                            But it’s time to let go. 
+                        </p>
+                    </div>
+
                     <div class="resolutions-submit">
+                        <p>
+                            Fire your 2018 resolutions up into space<br>
+                            and feel better instantly.
+                        </p>
                         <form>
                             <input type="text" name="author" id="author" placeholder="Type your name"><br>
                             <textarea name="description" id="description" placeholder="Which 2018 resolution do you want to get rid off?"></textarea>
                             <p></p>
-                            <a href="#" id="submit-resolution">Ship to space</a>
                             <p class="notification-field"></p>
                         </form>
+                        <a href="#" id="submit-resolution">Ship to space</a>
                     </div>
-                </main>
-
-                <div class="resolutions-edit">
-                    <h3> Edit your existing resolution </h3>
-                    <input id="search-req-id" placeholder="Input your ID"></input>
-                    <p></p>
-                    <a href="#" id="display-one-resolution">Search</a>
-                    <div id="one-resolution-result"></div>
                 </div>
-
-                <div class="hill">
-                    <img src="./static/bottom-hill.svg" alt="Hill Illustration">
-                </div>
-
             </div>
         </div>
         <script src="js/app.js"></script>
