@@ -113,34 +113,13 @@ var _helperFunctions2 = _interopRequireDefault(_helperFunctions);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//Add resize event listener
-//Calculate windowHeight & windowWidth
-//Calculate 80% windowWidth and 30% windowHeight
-//Math.random() for x and y position, with values above as minMax
-//querySelect element, style left(value) and top(value)
-
 var allEyes = [];
 
 window.addEventListener("resize", function () {
-  var _this = this;
 
   //Getting WindowHeight & WindowWidth on every resize,
   //so that we can dynamically calculate random pos for eyes
-  var windowHeight = window.innerHeight;
-  var windowWidth = window.innerWidth;
-  var elementXPosMin = 0;
-  var elementXPosMax = windowHeight / 100 * 40;
-  var elementYPosMin = windowWidth / 100 * 10;
-  var elementYPosMax = windowWidth / 100 * 80;
-
-  allEyes.forEach(function (eye) {
-
-    _this.randomYPos = _helperFunctions2.default.randomMinMax(elementYPosMin, elementYPosMax) + 'px';
-    _this.randomXPos = _helperFunctions2.default.randomMinMax(elementXPosMin, elementXPosMax) + 'px';
-
-    eye.style.left = _this.randomYPos;
-    eye.style.top = _this.randomXPos;
-  });
+  _helperFunctions2.default.assignRandomPositions(allEyes);
 });
 
 window.addEventListener("load", function () {
@@ -172,6 +151,7 @@ window.addEventListener("load", function () {
       });
 
       allEyes = document.querySelectorAll('.eye-icon');
+      _helperFunctions2.default.assignRandomPositions(allEyes);
     });
   });
 
@@ -201,7 +181,7 @@ window.addEventListener("load", function () {
 });
 
 },{"./api-request-service.js":1,"./helper-functions.js":3}],3:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -217,12 +197,32 @@ var HelperFunctions = function () {
   }
 
   _createClass(HelperFunctions, [{
-    key: "randomMinMax",
+    key: 'createRandomXYPosition',
 
 
-    //Returning Ramdon Number within Min Max Range
-    value: function randomMinMax(min, max) {
-      return min + Math.random() * (max - min);
+    //Create random Pixel value based on percentage restrictions
+    value: function createRandomXYPosition(minPercentage, maxPercentage, widthOrHeight) {
+
+      var elementPosMin = widthOrHeight / 100 * minPercentage;
+      var elementPosMax = widthOrHeight / 100 * maxPercentage;
+
+      return elementPosMin + Math.random() * (elementPosMax - elementPosMin) + 'px';
+    }
+
+    //Adding random positions to array of items
+
+  }, {
+    key: 'assignRandomPositions',
+    value: function assignRandomPositions(array) {
+      var _this = this;
+
+      var windowWidth = window.innerWidth;
+      var windowHeight = window.innerHeight;
+
+      array.forEach(function (item) {
+        item.style.left = _this.createRandomXYPosition(10, 70, windowWidth);
+        item.style.top = _this.createRandomXYPosition(0, 40, windowHeight);
+      });
     }
   }]);
 

@@ -12,11 +12,14 @@
   border: solid 1px black;
   position: relative; }
 
+.header-logo, .intro-copy {
+  z-index: 10; }
+
 .header-logo {
   width: 40%;
   position: absolute;
   left: 30%;
-  top: 8%;
+  top: 4%;
   text-align: center;
   font-size: 20px; }
   .header-logo img {
@@ -25,11 +28,11 @@
 .intro-copy {
   width: 40%;
   position: absolute;
-  top: 16%;
+  top: 10%;
   margin-top: 20px;
   left: 30%;
   text-align: center;
-  font-size: 20px; }
+  font-size: 24px; }
 
 .all-resolutions-result {
   position: absolute;
@@ -54,12 +57,12 @@
     display: block;
     height: 100%;
     width: 100%;
-    max-width: 60px; }
+    max-width: 40px; }
 
 .curtain {
   display: inline-block;
   position: absolute;
-  z-index: 10;
+  z-index: 20;
   background-color: black; }
   .curtain img {
     height: 100vh; }
@@ -86,8 +89,9 @@
   position: absolute;
   height: 100%;
   width: 20%;
-  top: 34%;
-  left: 40%; }
+  top: 28%;
+  left: 40%;
+  z-index: 10; }
   .rocket img {
     max-height: 500px; }
 
@@ -104,11 +108,12 @@
   position: absolute;
   display: block;
   width: 20%;
-  bottom: 3%;
+  bottom: 6%;
   left: 40%;
   text-align: left;
   font-size: 20px;
-  color: black; }
+  color: black;
+  z-index: 10; }
   .resolutions-submit textarea {
     background-color: #157497;
     border: solid 2px black;
@@ -142,3 +147,10 @@
     color: #FAEDD4;
     text-decoration: none;
     border-radius: 10px; }
+
+.hill {
+  position: absolute;
+  display: block;
+  width: 100%;
+  bottom: 0;
+  left: 0; }
