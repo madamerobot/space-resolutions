@@ -107,7 +107,41 @@ var _apiRequestService = require('./api-request-service.js');
 
 var _apiRequestService2 = _interopRequireDefault(_apiRequestService);
 
+var _helperFunctions = require('./helper-functions.js');
+
+var _helperFunctions2 = _interopRequireDefault(_helperFunctions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//Add resize event listener
+//Calculate windowHeight & windowWidth
+//Calculate 80% windowWidth and 30% windowHeight
+//Math.random() for x and y position, with values above as minMax
+//querySelect element, style left(value) and top(value)
+
+var allEyes = [];
+
+window.addEventListener("resize", function () {
+  var _this = this;
+
+  //Getting WindowHeight & WindowWidth on every resize,
+  //so that we can dynamically calculate random pos for eyes
+  var windowHeight = window.innerHeight;
+  var windowWidth = window.innerWidth;
+  var elementXPosMin = 0;
+  var elementXPosMax = windowHeight / 100 * 40;
+  var elementYPosMin = windowWidth / 100 * 10;
+  var elementYPosMax = windowWidth / 100 * 80;
+
+  allEyes.forEach(function (eye) {
+
+    _this.randomYPos = _helperFunctions2.default.randomMinMax(elementYPosMin, elementYPosMax) + 'px';
+    _this.randomXPos = _helperFunctions2.default.randomMinMax(elementXPosMin, elementXPosMax) + 'px';
+
+    eye.style.left = _this.randomYPos;
+    eye.style.top = _this.randomXPos;
+  });
+});
 
 window.addEventListener("load", function () {
 
@@ -128,13 +162,16 @@ window.addEventListener("load", function () {
     result.forEach(function (item) {
 
       var newNode = document.createElement('div');
-      newNode.classList.add('star-icon');
-      newNode.innerHTML = "<a href='#' data-id='" + item._id + "'>⭐️ </a>";
+      newNode.classList.add('eye-icon');
+      newNode.innerHTML = "<button><img src='./static/eye.svg' alt='Hand Illustration Right'></button>";
+      //<a href='#' data-id='" + item._id + "'>👁 </a>
       allResField.appendChild(newNode);
 
       newNode.addEventListener("click", function () {
         console.log(item.title ? item.title : 'No title provided');
       });
+
+      allEyes = document.querySelectorAll('.eye-icon');
     });
   });
 
@@ -163,4 +200,35 @@ window.addEventListener("load", function () {
   });
 });
 
-},{"./api-request-service.js":1}]},{},[2]);
+},{"./api-request-service.js":1,"./helper-functions.js":3}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var HelperFunctions = function () {
+  function HelperFunctions() {
+    _classCallCheck(this, HelperFunctions);
+  }
+
+  _createClass(HelperFunctions, [{
+    key: "randomMinMax",
+
+
+    //Returning Ramdon Number within Min Max Range
+    value: function randomMinMax(min, max) {
+      return min + Math.random() * (max - min);
+    }
+  }]);
+
+  return HelperFunctions;
+}();
+
+exports.default = new HelperFunctions();
+
+},{}]},{},[2]);

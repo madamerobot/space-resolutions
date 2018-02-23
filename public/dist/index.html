@@ -3,39 +3,84 @@
 
     <head prefix="og: http://ogp.me/ns#">
         <link rel="stylesheet" href="css/app.css">
+        <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
     </head>
 
     <body>
-        <main role="main">
-          <h1>Rocket Machine</p>
-        </main>
+        <div class="wrapper-main">
 
-        <div id="all-resolutions-result"></div>
+            <div class="curtain curtains-left">
+                 <img src="./static/curt-links-1.svg" alt="Curtain Illustration Element">
+                 <img src="./static/curt-links-2.svg" alt="Curtain Illustration Element">
+                 <img src="./static/curt-links-3.svg" alt="Curtain Illustration Element">
+                 <img src="./static/curt-links-4.svg" alt="Curtain Illustration Element">
+                 <img src="./static/curt-links-5.svg" alt="Curtain Illustration Element">
+                 <img src="./static/curt-links-6.svg" alt="Curtain Illustration Element">
+            </div>
 
-        <p></p>
+            <div class="curtain curtains-right">
+                 <img src="./static/curt-links-1.svg" alt="Curtain Illustration Element">
+                 <img src="./static/curt-links-2.svg" alt="Curtain Illustration Element">
+                 <img src="./static/curt-links-3.svg" alt="Curtain Illustration Element">
+                 <img src="./static/curt-links-4.svg" alt="Curtain Illustration Element">
+                 <img src="./static/curt-links-5.svg" alt="Curtain Illustration Element">
+                 <img src="./static/curt-links-6.svg" alt="Curtain Illustration Element">
+            </div>
 
-        <h3> Ship your resolution into space </h3>
+            <div class="center-container">
 
-        <form>
-            Title:<br>
-            <input type="text" name="title" id="name" value="I want to loose weight"><br>
-            Author:<br>
-            <input type="text" name="author" id="author" value="Miss Piggy"><br>
-            Description:<br>
-            <input type="text" name="description" id="description" value="I give up because of Bitterballen"><br>
-            <p></p>
-            <a href="#" id="submit-resolution">Ship to space</a>
-            <p class="notification-field"></p>
-        </form>
+                <div class="header-logo">
+                    <img src="./static/logo.svg" alt="Rocket Machine Logo">
+                </div>
 
-        <h3> Edit your existing resolution </h3>
-        <input id="search-req-id" placeholder="Input your ID"></input>
-        <p></p>
-        <a href="#" id="display-one-resolution">Search</a>
-        <div id="one-resolution-result"></div>
+                <div class="intro-copy">
+                    <p>Yes, we all had them. And we all believed we’d make it.<br>
+                        But it’s time to let go. 
+                    </p>
+                    <p>
+                    Fire your 2018 resolutions up into space
+                    and feel better instantly.
+                    </p>
+                </div>
 
-        <p></p>
+                <div id="all-resolutions-result"></div>
 
+                <div class="hand-wrapper">
+                    <div class="hand hand-right">
+                        <img src="./static/hand-right.svg" alt="Hand Illustration Right">
+                    </div>
+
+                    <div class="hand hand-left">
+                        <img src="./static/hand-left.svg" alt="Hand Illustration Left">
+                    </div>
+                </div>
+
+                <div class="rocket">
+                    <img src="./static/rocket-eye.svg" alt="Rocket Ship Illustration">
+                </div>
+
+                <main role="main">
+                    <div class="resolutions-submit">
+                        <form>
+                            <input type="text" name="author" id="author" placeholder="Type your name"><br>
+                            <textarea name="description" id="description" placeholder="Which 2018 resolution do you want to get rid off?"></textarea>
+                            <p></p>
+                            <a href="#" id="submit-resolution">Ship to space</a>
+                            <p class="notification-field"></p>
+                        </form>
+                    </div>
+                </main>
+
+                <div class="resolutions-edit">
+                    <h3> Edit your existing resolution </h3>
+                    <input id="search-req-id" placeholder="Input your ID"></input>
+                    <p></p>
+                    <a href="#" id="display-one-resolution">Search</a>
+                    <div id="one-resolution-result"></div>
+                </div>
+
+            </div>
+        </div>
         <script src="js/app.js"></script>
     </body>
 
