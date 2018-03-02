@@ -1,5 +1,6 @@
 import RequestService from './api-request-service.js'
 import HelperFunctions from './helper-functions.js'
+import Animations from './animations.js'
 
 let allEyes = []
 
@@ -11,6 +12,12 @@ window.addEventListener("resize", function() {
 
 })
 
+//Adding Animations
+window.addEventListener('load', function(){
+  Animations.hoverHands()
+})
+
+//Adding 
 window.addEventListener("load", function() {
   
   //Button Elements
@@ -31,8 +38,7 @@ window.addEventListener("load", function() {
 
       let newNode = document.createElement('div')
       newNode.classList.add('eye-icon')
-      newNode.innerHTML = "<button id='display-one-resolution'><img src='./static/eye.svg' alt='Hand Illustration Right'></button>"
-      //<a href='#' data-id='" + item._id + "'>👁 </a>
+      newNode.innerHTML = "<button data-id='" + item._id + "'><img src='./static/eye.svg' alt='Hand Illustration Right'></button>"
       allResField.appendChild(newNode)
 
       newNode.addEventListener("click", function(){
@@ -58,16 +64,21 @@ window.addEventListener("load", function() {
 
   })
 
-  // //Calling API endpoint to deliver specific entry from DB
-  // this.showOneButton.addEventListener("click", function () {
-    
-  //   this.searchRequestID = document.querySelector('#search-req-id').value
+  //Adding Event-Listener to each Eye-Button, to display specific resolution
+  allEyes.forEach((eye) => {
+    eye.addEventListener("click", function () {
 
-  //   RequestService.findOneResolution(this.searchRequestID).then((result => {
-  //     oneResField.innerHTML = JSON.stringify(result)
-  //   }))
-  // })
+      this.searchRequestID = eye.getAttribute('data-id')
+      console.log(this.searchRequestID)
 
+      RequestService.findOneResolution(this.searchRequestID).then((result => {
+        oneResField.innerHTML = JSON.stringify(result)
+      }))
+    })
+
+  })
+
+  
 })
 
 

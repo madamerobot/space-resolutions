@@ -1,6 +1,35 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// TweenLite.to(element, 1, { top: "20px", backgroundColor: "#FF0000", ease: Power2.easeOut });
+var AnimationEffects = function () {
+  function AnimationEffects() {
+    _classCallCheck(this, AnimationEffects);
+
+    this.leftHand = document.querySelector('.hand-left');
+    this.rightHand = document.querySelector('.hand-right');
+  }
+
+  _createClass(AnimationEffects, [{
+    key: 'hoverHands',
+    value: function hoverHands() {
+      TweenLite.to(this.leftHand, 5, { bottom: "10px", ease: Elastic.easeOut });
+      TweenLite.to(this.rightHand, 5, { bottom: "10px", ease: Elastic.easeOut });
+    }
+  }]);
+
+  return AnimationEffects;
+}();
+
+module.exports = new AnimationEffects();
+
+},{}],2:[function(require,module,exports){
+'use strict';
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -100,7 +129,7 @@ var RequestService = function () {
 
 exports.default = new RequestService();
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 var _apiRequestService = require('./api-request-service.js');
@@ -110,6 +139,10 @@ var _apiRequestService2 = _interopRequireDefault(_apiRequestService);
 var _helperFunctions = require('./helper-functions.js');
 
 var _helperFunctions2 = _interopRequireDefault(_helperFunctions);
+
+var _animations = require('./animations.js');
+
+var _animations2 = _interopRequireDefault(_animations);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -122,6 +155,12 @@ window.addEventListener("resize", function () {
   _helperFunctions2.default.assignRandomPositions(allEyes);
 });
 
+//Adding Animations
+window.addEventListener('load', function () {
+  _animations2.default.hoverHands();
+});
+
+//Adding 
 window.addEventListener("load", function () {
 
   //Button Elements
@@ -142,8 +181,7 @@ window.addEventListener("load", function () {
 
       var newNode = document.createElement('div');
       newNode.classList.add('eye-icon');
-      newNode.innerHTML = "<button id='display-one-resolution'><img src='./static/eye.svg' alt='Hand Illustration Right'></button>";
-      //<a href='#' data-id='" + item._id + "'>👁 </a>
+      newNode.innerHTML = "<button data-id='" + item._id + "'><img src='./static/eye.svg' alt='Hand Illustration Right'></button>";
       allResField.appendChild(newNode);
 
       newNode.addEventListener("click", function () {
@@ -168,18 +206,21 @@ window.addEventListener("load", function () {
     });
   });
 
-  // //Calling API endpoint to deliver specific entry from DB
-  // this.showOneButton.addEventListener("click", function () {
+  //Adding Event-Listener to each Eye-Button, to display specific resolution
+  allEyes.forEach(function (eye) {
+    eye.addEventListener("click", function () {
 
-  //   this.searchRequestID = document.querySelector('#search-req-id').value
+      this.searchRequestID = eye.getAttribute('data-id');
+      console.log(this.searchRequestID);
 
-  //   RequestService.findOneResolution(this.searchRequestID).then((result => {
-  //     oneResField.innerHTML = JSON.stringify(result)
-  //   }))
-  // })
+      _apiRequestService2.default.findOneResolution(this.searchRequestID).then(function (result) {
+        oneResField.innerHTML = JSON.stringify(result);
+      });
+    });
+  });
 });
 
-},{"./api-request-service.js":1,"./helper-functions.js":3}],3:[function(require,module,exports){
+},{"./animations.js":1,"./api-request-service.js":2,"./helper-functions.js":4}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -219,7 +260,7 @@ var HelperFunctions = function () {
       var windowHeight = window.innerHeight;
 
       array.forEach(function (item) {
-        item.style.left = _this.createRandomXYPosition(10, 70, windowWidth);
+        item.style.left = _this.createRandomXYPosition(10, 80, windowWidth);
         item.style.top = _this.createRandomXYPosition(0, 40, windowHeight);
       });
     }
@@ -230,4 +271,4 @@ var HelperFunctions = function () {
 
 exports.default = new HelperFunctions();
 
-},{}]},{},[2]);
+},{}]},{},[3]);

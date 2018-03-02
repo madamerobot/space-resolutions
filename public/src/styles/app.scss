@@ -53,6 +53,7 @@
         position: absolute;
         z-index: 20;
         background-color: black;
+        max-width: 380px;
 
         img {
             height: 100vh;
@@ -78,28 +79,29 @@
         height: 70%;
         width: 39%;
         z-index: 5;
-        bottom: 0;
+        bottom: -30px;
 
         img {
             max-height: 900px;
             position: absolute;
             bottom: -80px;
         }
+
     }
 
     .hand-left {
-        left: 5%;
+        left: 3%;
     }
 
     .hand-right {
-        right: 5%;
+        right: 3%;
     }
 
     .rocket {
         position: absolute;
         height: 100%;
         width: 20%;
-        top: 28%;
+        top: 26%;
         left: 40%;
         z-index: 10;
 
@@ -180,7 +182,7 @@
     flex-direction: column;
     align-items: center;
 
-    margin-bottom: 2%;
+    margin-bottom: 3%;
 
     form {
         width: 24%;

@@ -16,7 +16,7 @@ class HelperFunctions {
     let windowHeight = window.innerHeight
 
     array.forEach((item) => {
-      item.style.left = this.createRandomXYPosition(10, 70, windowWidth)
+      item.style.left = this.createRandomXYPosition(10, 80, windowWidth)
       item.style.top = this.createRandomXYPosition(0, 40, windowHeight)
     })
 

@@ -4,17 +4,17 @@ const babel = require('gulp-babel')
 const sass = require('gulp-sass')
 const concat = require('gulp-concat')
 const gulpUtil = require('gulp-util')
-const fs = require('fs');
-const browserify = require('browserify');
-const uglify = require('gulp-uglify');
-const buffer = require('vinyl-buffer');
+const fs = require('fs') 
+const browserify = require('browserify')    
+const uglify = require('gulp-uglify')       
+const buffer = require('vinyl-buffer')  
 const source = require('vinyl-source-stream')
 const watchify = require('watchify')
 const nodemon = require('gulp-nodemon')
 
 //Watching files for changes
 gulp.task('watchStyles', () => {
-    gulp.watch('./public/src/styles/**/*.scss', () => {
+    gulp.watch('./public/src/styles/*.scss', () => {
         gulp.start('sass')
     })
 
@@ -87,4 +87,4 @@ gulp.task('browserify', () => {
 })
 
 gulp.task('watch', ['watchStyles', 'watchJs', 'watchHtml'])
-gulp.task('default', ['watch', 'static', 'sass', 'browserify'])
+gulp.task('default', ['watch', 'static', 'sass', 'browserify', 'html'])

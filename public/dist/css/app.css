@@ -36,7 +36,8 @@
     display: inline-block;
     position: absolute;
     z-index: 20;
-    background-color: black; }
+    background-color: black;
+    max-width: 380px; }
     .stage .curtain img {
       height: 100vh; }
   .stage .curtains-left {
@@ -52,20 +53,20 @@
     height: 70%;
     width: 39%;
     z-index: 5;
-    bottom: 0; }
+    bottom: -30px; }
     .stage .hand img {
       max-height: 900px;
       position: absolute;
       bottom: -80px; }
   .stage .hand-left {
-    left: 5%; }
+    left: 3%; }
   .stage .hand-right {
-    right: 5%; }
+    right: 3%; }
   .stage .rocket {
     position: absolute;
     height: 100%;
     width: 20%;
-    top: 28%;
+    top: 26%;
     left: 40%;
     z-index: 10; }
     .stage .rocket img {
@@ -125,7 +126,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2%; }
+  margin-bottom: 3%; }
   .resolutions-submit form {
     width: 24%; }
   .resolutions-submit input {
