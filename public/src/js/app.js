@@ -15,6 +15,7 @@ window.addEventListener("resize", function() {
 //Adding Animations
 window.addEventListener('load', function(){
   Animations.hoverHands()
+  Animations.hoverRocket()
 })
 
 //Adding 

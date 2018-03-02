@@ -12,6 +12,7 @@ var AnimationEffects = function () {
 
     this.leftHand = document.querySelector('.hand-left');
     this.rightHand = document.querySelector('.hand-right');
+    this.rocket = document.querySelector('.rocket');
   }
 
   _createClass(AnimationEffects, [{
@@ -19,6 +20,11 @@ var AnimationEffects = function () {
     value: function hoverHands() {
       TweenLite.to(this.leftHand, 5, { bottom: "10px", ease: Elastic.easeOut });
       TweenLite.to(this.rightHand, 5, { bottom: "10px", ease: Elastic.easeOut });
+    }
+  }, {
+    key: 'hoverRocket',
+    value: function hoverRocket() {
+      TweenLite.to(this.rocket, 3, { top: "25%", ease: Elastic.easeOut });
     }
   }]);
 
@@ -158,6 +164,7 @@ window.addEventListener("resize", function () {
 //Adding Animations
 window.addEventListener('load', function () {
   _animations2.default.hoverHands();
+  _animations2.default.hoverRocket();
 });
 
 //Adding 
