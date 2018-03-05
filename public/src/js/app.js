@@ -3,6 +3,7 @@ import HelperFunctions from './helper-functions.js'
 import Animations from './animations.js'
 
 let allEyes = []
+let rocketShipped = false
 
 window.addEventListener("resize", function() {
 
@@ -18,7 +19,7 @@ window.addEventListener('load', function(){
   Animations.hoverRocket()
 })
 
-//Adding 
+//Adding Event Listeners
 window.addEventListener("load", function() {
   
   //Button Elements
@@ -54,14 +55,23 @@ window.addEventListener("load", function() {
   //Sending values from form field to API endpoint to create new entry
   this.formButton.addEventListener("click", function () {
 
-    this.data = {
-      author: document.querySelector('#author').value,
-      description: document.querySelector('#description').value
-    }
+    // this.data = {
+    //   author: document.querySelector('#author').value,
+    //   description: document.querySelector('#description').value
+    // }
 
-    RequestService.createNewResolution(this.data).then((result) => {
-      notificationField.innerHTML = "Your abandoned resolution is now successfully floating in space."
-    })
+    // RequestService.createNewResolution(this.data).then((result) => {
+    //   // notificationField.innerHTML = "Your abandoned resolution is now successfully floating in space."
+    //   this.innerHTML = "See you in out of space!"
+    // })
+
+    Animations.shootRocket()
+    rocketShipped = true
+
+    Animations.easeOutInputFields()
+    Animations.easeOutHeader()
+    Animations.easeOutCurtains()
+    Animations.easeOutPlanet()
 
   })
 

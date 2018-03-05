@@ -13,6 +13,13 @@ var AnimationEffects = function () {
     this.leftHand = document.querySelector('.hand-left');
     this.rightHand = document.querySelector('.hand-right');
     this.rocket = document.querySelector('.rocket');
+    this.resolutionsField = document.querySelector('.resolutions-submit');
+    this.curtainsLeft = document.querySelector('.curtains-left');
+    this.curtainsRight = document.querySelector('.curtains-right');
+    this.handLeft = document.querySelector('.hand-left');
+    this.handRight = document.querySelector('.hand-right');
+    this.hill = document.querySelector('.hill');
+    this.header = document.querySelector('.intro-copy');
   }
 
   _createClass(AnimationEffects, [{
@@ -25,6 +32,36 @@ var AnimationEffects = function () {
     key: 'hoverRocket',
     value: function hoverRocket() {
       TweenLite.to(this.rocket, 3, { top: "25%", ease: Elastic.easeOut });
+    }
+  }, {
+    key: 'shootRocket',
+    value: function shootRocket() {
+      TweenLite.to(this.rocket, 3, { top: "-550px", ease: Elastic.easeIn });
+    }
+  }, {
+    key: 'easeOutInputFields',
+    value: function easeOutInputFields() {
+      this.resolutionsField.style.position = 'relative';
+      TweenLite.to(this.resolutionsField, 1, { bottom: "-460px", ease: Power3.easeIn });
+    }
+  }, {
+    key: 'easeOutCurtains',
+    value: function easeOutCurtains() {
+      TweenLite.to(this.curtainsLeft, 1, { left: "-400px", ease: Power3.easeIn });
+      TweenLite.to(this.curtainsRight, 1, { right: "-400px", ease: Power3.easeIn });
+      TweenLite.to(this.handLeft, 0.5, { left: "-920px", ease: Power3.easeIn });
+      TweenLite.to(this.handRight, 0.5, { right: "-920px", ease: Power3.easeIn });
+    }
+  }, {
+    key: 'easeOutPlanet',
+    value: function easeOutPlanet() {
+      TweenLite.to(this.hill, 2.5, { bottom: "-520px", ease: Circ.easeIn });
+    }
+  }, {
+    key: 'easeOutHeader',
+    value: function easeOutHeader() {
+      this.header.style.position = 'relative';
+      TweenLite.to(this.header, 1, { top: "-280px", ease: Power3.easeIn });
     }
   }]);
 
@@ -153,6 +190,7 @@ var _animations2 = _interopRequireDefault(_animations);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var allEyes = [];
+var rocketShipped = false;
 
 window.addEventListener("resize", function () {
 
@@ -167,7 +205,7 @@ window.addEventListener('load', function () {
   _animations2.default.hoverRocket();
 });
 
-//Adding 
+//Adding Event Listeners
 window.addEventListener("load", function () {
 
   //Button Elements
@@ -203,14 +241,23 @@ window.addEventListener("load", function () {
   //Sending values from form field to API endpoint to create new entry
   this.formButton.addEventListener("click", function () {
 
-    this.data = {
-      author: document.querySelector('#author').value,
-      description: document.querySelector('#description').value
-    };
+    // this.data = {
+    //   author: document.querySelector('#author').value,
+    //   description: document.querySelector('#description').value
+    // }
 
-    _apiRequestService2.default.createNewResolution(this.data).then(function (result) {
-      notificationField.innerHTML = "Your abandoned resolution is now successfully floating in space.";
-    });
+    // RequestService.createNewResolution(this.data).then((result) => {
+    //   // notificationField.innerHTML = "Your abandoned resolution is now successfully floating in space."
+    //   this.innerHTML = "See you in out of space!"
+    // })
+
+    _animations2.default.shootRocket();
+    rocketShipped = true;
+
+    _animations2.default.easeOutInputFields();
+    _animations2.default.easeOutHeader();
+    _animations2.default.easeOutCurtains();
+    _animations2.default.easeOutPlanet();
   });
 
   //Adding Event-Listener to each Eye-Button, to display specific resolution
